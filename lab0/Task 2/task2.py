@@ -21,4 +21,4 @@ if 0 <= n <= 45:
         file.write(str(fib))
     file.close()
 else:
-    print('Число не соответсвует условию')
+    print('Число не соответствует условию')
