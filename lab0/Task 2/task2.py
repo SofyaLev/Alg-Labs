@@ -1,4 +1,3 @@
-
 def calc_fib(n):
     if n == 0:
         res = '0'
