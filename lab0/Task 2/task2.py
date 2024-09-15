@@ -1,14 +1,15 @@
 
 def calc_fib(n):
     if n == 0:
-        file.write('0')
+        res = '0'
     elif n == 1:
-        file.write('1')
+        res = '0'
     else:
         l = [0, 1]
         for i in range(1, n):
             l.append(l[i-1] + l[i])
-    return l[n]
+        res = l[n]
+    return res
 
 
 with open('input.txt', 'r') as file:
