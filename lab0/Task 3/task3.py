@@ -6,8 +6,8 @@ def calc_fib(n):
     else:
         a, b = 0, 1
         for _ in range(n-1):
-            a, b = b, a + b
-        res = b % 10
+            a, b = b, (a + b)
+        res = b
     return res
 
 
