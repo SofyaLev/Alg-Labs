@@ -8,4 +8,4 @@ test_v = 2
 start_time1 = time.perf_counter()
 test1 = linear_search(test_nums1, test_v)
 print(f'Время: {time.perf_counter() - start_time1} секунд')
-print(f'Память: {psutil.Process().memory_info().rss / 1024**2:.2f} Мбайт')
+print(f'Память: {psutil.Process().memory_info().rss / 1024**2} Мбайт')
