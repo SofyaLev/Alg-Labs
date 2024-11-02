@@ -1,3 +1,9 @@
+import sys
+import os
+import psutil
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+from utils import read_file, write_output
+
 def majority_element(array):
     def find_candidate(array):
         count = 0
@@ -23,3 +29,12 @@ def majority_element(array):
         return 1
     else:
         return 0
+
+
+if __name__ == '__main__':
+    _, massive = read_file(task=5)
+    array = list(map(int, massive.split()))
+    result = majority_element(array)
+    output = str(result)
+    write_output(5, output)
+    print(f'Память: {psutil.Process().memory_info().rss / 1024 ** 2} Мбайт')

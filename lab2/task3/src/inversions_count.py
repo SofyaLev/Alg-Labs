@@ -1,3 +1,9 @@
+import sys
+import os
+import psutil
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+from utils import read_file, write_output
+
 def inversions_merge(array, temp_array, left, middle, right):
     i = left
     j = middle + 1
@@ -26,11 +32,20 @@ def inversions_merge(array, temp_array, left, middle, right):
     return inversions_count
 
 
-def inversions_merge_sort(array, temp_array, left, right):
-    inversions_count = 0
+def inversions_count(array, temp_array, left, right):
+    counter = 0
     if left < right:
         middle = (left + right) // 2
-        inversions_count += inversions_merge_sort(array, temp_array, left, middle)
-        inversions_count += inversions_merge_sort(array, temp_array, middle+1, right)
-        inversions_count += inversions_merge(array, temp_array, left, middle, right)
-    return inversions_count
+        counter += inversions_count(array, temp_array, left, middle)
+        counter += inversions_count(array, temp_array, middle+1, right)
+        counter += inversions_merge(array, temp_array, left, middle, right)
+    return counter
+
+
+if __name__ == '__main__':
+    _, massive = read_file(task=3)
+    array = list(map(int, massive.split()))
+    temp_array = [0] * len(array)
+    inversions_count = inversions_count(array, temp_array, 0, len(array) - 1)
+    write_output(3, str(inversions_count))
+    print(f'Память: {psutil.Process().memory_info().rss / 1024 ** 2} Мбайт')
