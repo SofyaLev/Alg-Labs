@@ -6,24 +6,44 @@ from lab2.task5.src.majority_element import majority_element
 class TestMajorityElement(unittest.TestCase):
 
     def test_should_find_majority_element_example1_array(self):
+        # given
         array = [2, 3, 9, 2, 2]
-        self.assertEqual(majority_element(array), 1)
+        # when
+        result = majority_element(array)
+        # then
+        self.assertEqual(result, 1)
 
     def test_should_find_majority_element_example2_array(self):
+        # given
         array = [1, 2, 3, 4]
-        self.assertEqual(majority_element(array), 0)
+        # when
+        result = majority_element(array)
+        # then
+        self.assertEqual(result, 0)
 
     def test_should_find_majority_element_single_element_array(self):
+        # given
         array = [1]
-        self.assertEqual(majority_element(array), 1)
+        # when
+        result = majority_element(array)
+        # then
+        self.assertEqual(result, 1)
 
     def test_should_find_majority_element_empty_array(self):
+        # given
         array = []
-        self.assertEqual(majority_element(array), 0)
+        # when
+        result = majority_element(array)
+        # then
+        self.assertEqual(result, 0)
 
     def test_should_find_majority_element_equally(self):
+        # given
         array = [1, 1, 1, 2, 2, 2]
-        self.assertEqual(majority_element(array), 0)
+        # when
+        result = majority_element(array)
+        # then
+        self.assertEqual(result, 0)
 
 
 if __name__ == '__main__':
