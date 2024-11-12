@@ -46,7 +46,7 @@ class TestMergeSortIndexes(unittest.TestCase):
         # given
         n = 1
         array = [0]
-        expected_result = None
+        expected_result = [0]
 
         # when
         result = merge_sort_indexes(array, 0, n - 1)
@@ -58,7 +58,7 @@ class TestMergeSortIndexes(unittest.TestCase):
         # given
         n = 0
         array = []
-        expected_result = None
+        expected_result = []
 
         # when
         result = merge_sort_indexes(array, 0, n - 1)

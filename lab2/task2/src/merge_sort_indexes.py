@@ -22,6 +22,8 @@ def merge_sort_indexes(array, left, right):
         merge_sort_indexes(array, middle+1, right)
         merge_indexes(array, left, middle, right)
         return array
+    if left >= right:
+        return array
 
 
 if __name__ == '__main__':

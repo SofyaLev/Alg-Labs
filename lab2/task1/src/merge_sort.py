@@ -21,6 +21,8 @@ def merge_sort(array, left, right):
         merge_sort(array, middle+1, right)
         merge(array, left, middle, right)
         return array
+    if left >= right:
+        return array
 
 
 if __name__ == '__main__':

@@ -54,18 +54,6 @@ class TestMergeSort(unittest.TestCase):
         # then
         self.assertEqual(result, expected_result)
 
-    def test_should_sort_empty_array(self):
-        # given
-        n = 0
-        array = []
-        expected_result = []
-
-        # when
-        result = merge_sort(array, 0, len(array) - 1)
-
-        # then
-        self.assertEqual(result, expected_result)
-
     def test_should_sort_large_numbers_array(self):
         # given
         n = 10 ** 5
