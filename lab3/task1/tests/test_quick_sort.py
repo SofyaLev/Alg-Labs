@@ -1,57 +1,82 @@
 import unittest
 
 from lab3.task1.src.quick_sort import quick_sort
+from lab3.utils import generate_random_array
 
 
 class TestQuickSort(unittest.TestCase):
 
     def test_should_sort_example_array(self):
         # given
+        n = 5
         array = [2, 3, 9, 2, 2]
+        expected_result = [2, 2, 2, 3, 9]
+
         # when
-        quick_sort(array, 0, len(array) - 1)
+        result = quick_sort(array, 0, n - 1)
+
         # then
-        self.assertEqual(array, [2, 2, 2, 3, 9])
+        self.assertEqual(result, expected_result)
 
     def test_should_sort_sorted_array(self):
         # given
+        n = 6
         array = [1, 2, 3, 4, 5, 6]
+        expected_result = [1, 2, 3, 4, 5, 6]
+
         # when
-        quick_sort(array, 0, len(array) - 1)
+        result = quick_sort(array, 0, n - 1)
+
         # then
-        self.assertEqual(array, [1, 2, 3, 4, 5, 6])
+        self.assertEqual(result, expected_result)
 
     def test_should_sort_reverse_sorted_array(self):
         # given
+        n = 6
         array = [6, 5, 4, 3, 2, 1]
+        expected_result = [1, 2, 3, 4, 5, 6]
+
         # when
-        quick_sort(array, 0, len(array) - 1)
+        result = quick_sort(array, 0, n - 1)
+
         # then
-        self.assertEqual(array, [1, 2, 3, 4, 5, 6])
+        self.assertEqual(result, expected_result)
 
     def test_should_sort_single_element_array(self):
         # given
+        n = 1
         array = [0]
+        expected_result = [0]
+
         # when
-        quick_sort(array, 0, len(array) - 1)
+        result = quick_sort(array, 0,n - 1)
+
         # then
-        self.assertEqual(array, [0])
+        self.assertEqual(result, expected_result)
 
     def test_should_sort_empty_array(self):
         # given
+        n = 0
         array = []
+        expected_result = []
+
         # when
-        quick_sort(array, 0, len(array) - 1)
+        result = quick_sort(array, 0, len(array) - 1)
+
         # then
-        self.assertEqual(array, [])
+        self.assertEqual(result, expected_result)
 
     def test_should_sort_large_numbers_array(self):
         # given
-        array = [1000000000, 999999999, 999999998]
+        n = 10**5
+        array = generate_random_array(n, -10**9, 10**9)
+        expected_result = sorted(array)
+
         # when
-        quick_sort(array, 0, len(array) - 1)
+        result = quick_sort(array, 0, n - 1)
+
         # then
-        self.assertEqual(array, [999999998, 999999999, 1000000000])
+        self.assertEqual(result, expected_result)
 
 
 if __name__ == '__main__':

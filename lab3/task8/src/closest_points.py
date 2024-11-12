@@ -1,11 +1,4 @@
-import sys
-import os
-import psutil
-import time
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from utils import *
-
-start_time = time.perf_counter()
+from lab3.utils import read_from_file, write_in_file, measuring
 
 
 def partition(A, l, r):
@@ -37,10 +30,12 @@ def closest_points(array, k):
 
 
 if __name__ == '__main__':
-    data = read_file(task=8)
-    n, k = list(map(int, data[0].split()))
-    array = [list(map(int, cord.split())) for cord in data[1:]]
+    data = read_from_file('../txtf/input.txt')
+
+    n, k = data[:2]
+    array = [data[i:i + 2] for i in range(2, n * 2 + 1, 2)]
     result = closest_points(array, k)
-    write_output(8, result)
-    print(f'Время: {(time.perf_counter() - start_time):.6f} секунд')
-    print(f'Память: {psutil.Process().memory_info().rss / 1024 ** 2} Мбайт')
+
+    write_in_file('../txtf/output.txt', result)
+
+    measuring(closest_points, array, k)

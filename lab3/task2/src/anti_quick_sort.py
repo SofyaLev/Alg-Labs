@@ -1,12 +1,4 @@
-import sys
-import os
-import psutil
-import time
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from utils import *
-
-start_time = time.perf_counter()
+from lab3.utils import read_from_file, write_in_file, measuring
 
 
 def qsort(a, left, right):
@@ -37,9 +29,11 @@ def anti_quick_sort(n):
 
 
 if __name__ == '__main__':
-    data = read_file(task=2)[0]
-    n = int(data)
+    data = read_from_file('../txtf/input.txt')
+
+    n = data[0]
     result = anti_quick_sort(n)
-    write_output(2, ' '.join(list(map(str, result))))
-    print(f'Время: {(time.perf_counter() - start_time):.6f} секунд')
-    print(f'Память: {psutil.Process().memory_info().rss / 1024 ** 2} Мбайт')
+
+    write_in_file('../txtf/output.txt', result)
+
+    measuring(anti_quick_sort, n)

@@ -1,8 +1,5 @@
-import sys
-import os
-import psutil
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from utils import read_file, write_output
+from lab2.utils import read_from_file, write_in_file, measuring
+
 
 def merge_indexes(array, left, middle, right):
     l_array = array[left:middle+1] + [float('inf')]
@@ -28,8 +25,11 @@ def merge_sort_indexes(array, left, right):
 
 
 if __name__ == '__main__':
-    _, massive = read_file(task=2)
-    array = list(map(int, massive.split()))
-    merge_sort_indexes(array, 0, len(array) - 1)
-    write_output(2, ' '.join(list(map(str, array))))
-    print(f'Память: {psutil.Process().memory_info().rss / 1024 ** 2} Мбайт')
+    data = read_from_file('../txtf/input.txt')
+
+    n, array = data[0], data[1:]
+    result = merge_sort_indexes(array, 0, len(array) - 1)
+
+    write_in_file('../txtf/output.txt', result)
+
+    measuring(merge_sort_indexes, array, 0, len(array) - 1)

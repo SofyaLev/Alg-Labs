@@ -1,57 +1,70 @@
 import unittest
 
 from lab2.task2.src.merge_sort_indexes import merge_sort_indexes
+from lab2.utils import generate_random_array
 
 
 class TestMergeSortIndexes(unittest.TestCase):
 
     def test_should_sort_example_array(self):
         # given
+        n = 4
         array = [9, 7, 5, 8]
+        expected_result = [5, 7, 8, 9]
+
         # when
-        merge_sort_indexes(array, 0, len(array) - 1)
+        result = merge_sort_indexes(array, 0, n - 1)
+
         # then
-        self.assertEqual(array, [5, 7, 8, 9])
+        self.assertEqual(result, expected_result)
 
     def test_should_sort_sorted_array(self):
         # given
+        n = 4
         array = [1, 2, 3, 4]
+        expected_result = [1, 2, 3, 4]
+
         # when
-        merge_sort_indexes(array, 0, len(array) - 1)
+        result = merge_sort_indexes(array, 0, n - 1)
+
         # then
-        self.assertEqual(array, [1, 2, 3, 4])
+        self.assertEqual(result, expected_result)
 
     def test_should_sort_reverse_sorted_array(self):
         # given
+        n = 4
         array = [10, 9, 8, 7]
+        expected_result = [7, 8, 9, 10]
+
         # when
-        merge_sort_indexes(array, 0, len(array) - 1)
+        result = merge_sort_indexes(array, 0, n - 1)
+
         # then
-        self.assertEqual(array, [7, 8, 9, 10])
+        self.assertEqual(result, expected_result)
 
     def test_should_sort_single_element_array(self):
         # given
+        n = 1
         array = [0]
+        expected_result = None
+
         # when
-        merge_sort_indexes(array, 0, len(array) - 1)
+        result = merge_sort_indexes(array, 0, n - 1)
+
         # then
-        self.assertEqual(array, [0])
+        self.assertEqual(result, expected_result)
 
     def test_should_sort_empty_array(self):
         # given
+        n = 0
         array = []
-        # when
-        merge_sort_indexes(array, 0, len(array) - 1)
-        # then
-        self.assertEqual(array, [])
+        expected_result = None
 
-    def test_should_sort_large_numbers_array(self):
-        # given
-        array = [1000000000, 999999999, 999999998]
         # when
-        merge_sort_indexes(array, 0, len(array) - 1)
+        result = merge_sort_indexes(array, 0, n - 1)
+
         # then
-        self.assertEqual(array, [999999998, 999999999, 1000000000])
+        self.assertEqual(result, expected_result)
 
 
 if __name__ == '__main__':

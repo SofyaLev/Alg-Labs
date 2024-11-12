@@ -9,20 +9,27 @@ class TestAntiQuickSort(unittest.TestCase):
         # given
         # example n
         n1 = 3
+        expected_result1 = [1, 3, 2]
+
         # another average n
         n2 = 10
+        expected_result2 = [1, 4, 6, 8, 10, 5, 3, 7, 2, 9]
+
         # when
         result1 = anti_quick_sort(n1)
         result2 = anti_quick_sort(n2)
+
         # then
-        self.assertEqual(result1, [1, 3, 2])
-        self.assertEqual(result2, [1, 4, 6, 8, 10, 5, 3, 7, 2, 9])
+        self.assertEqual(result1, expected_result1)
+        self.assertEqual(result2, expected_result2)
 
     def test_should_create_permutation_of_max_nums(self):
         # given
         n = 10**6
+
         # when
         result = anti_quick_sort(n)
+
         # then
         return result
 

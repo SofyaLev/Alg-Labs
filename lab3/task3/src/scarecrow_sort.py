@@ -1,11 +1,4 @@
-import sys
-import os
-import psutil
-import time
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from utils import *
-
-start_time = time.perf_counter()
+from lab3.utils import read_from_file, write_in_file, measuring
 
 
 def scarecrow_sort(n, k, array):
@@ -16,10 +9,12 @@ def scarecrow_sort(n, k, array):
 
 
 if __name__ == '__main__':
-    data, massive = read_file(task=3)
-    n, k = list(map(int, data.split()))
-    array = list(map(int, massive.split()))
-    scarecrow_sort = scarecrow_sort(n, k, array)
-    write_output(3, scarecrow_sort)
-    print(f'Время: {(time.perf_counter() - start_time):.6f} секунд')
-    print(f'Память: {psutil.Process().memory_info().rss / 1024 ** 2} Мбайт')
+    data = read_from_file('../txtf/input.txt')
+
+    n, k = data[:2]
+    array = data[2:]
+    result = scarecrow_sort(n, k, array)
+
+    write_in_file('../txtf/output.txt', [result])
+
+    measuring(scarecrow_sort, n, k, array)

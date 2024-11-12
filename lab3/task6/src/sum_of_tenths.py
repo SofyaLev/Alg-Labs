@@ -1,11 +1,4 @@
-import sys
-import os
-import psutil
-import time
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from utils import *
-
-start_time = time.perf_counter()
+from lab3.utils import read_from_file, write_in_file, measuring
 
 
 def quick_sort(A, l, r):
@@ -37,10 +30,13 @@ def sum_of_tenths(A, B):
 
 
 if __name__ == '__main__':
-    _, A, B = read_file(task=6)
-    A = list(map(int, A.split()))
-    B = list(map(int, B.split()))
+    data = read_from_file('../txtf/input.txt')
+
+    n, m = data[:2]
+    A = data[2:n + 2]
+    B = data[n + 2:]
     result = sum_of_tenths(A, B)
-    write_output(6, str(result))
-    print(f'Время: {(time.perf_counter() - start_time):.6f} секунд')
-    print(f'Память: {psutil.Process().memory_info().rss / 1024 ** 2} Мбайт')
+
+    write_in_file('../txtf/output.txt', [result])
+
+    measuring(sum_of_tenths, A, B)

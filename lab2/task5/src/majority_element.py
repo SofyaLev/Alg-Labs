@@ -1,8 +1,5 @@
-import sys
-import os
-import psutil
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from utils import read_file, write_output
+from lab2.utils import read_from_file, write_in_file, measuring
+
 
 def majority_element(array):
     def find_candidate(array):
@@ -32,9 +29,11 @@ def majority_element(array):
 
 
 if __name__ == '__main__':
-    _, massive = read_file(task=5)
-    array = list(map(int, massive.split()))
+    data = read_from_file('../txtf/input.txt')
+
+    n, array = data[0], data[1:]
     result = majority_element(array)
-    output = str(result)
-    write_output(5, output)
-    print(f'Память: {psutil.Process().memory_info().rss / 1024 ** 2} Мбайт')
+
+    write_in_file('../txtf/output.txt', [result])
+
+    measuring(majority_element, array)

@@ -1,8 +1,5 @@
-import sys
-import os
-import psutil
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from utils import read_file, write_output
+from lab2.utils import read_from_file, write_in_file, measuring
+
 
 def binary_search(array, target):
     left, right = 0, len(array) - 1
@@ -16,6 +13,7 @@ def binary_search(array, target):
             right = middle - 1
     return -1
 
+
 def search_elements(array, targets):
     result = []
     for target in targets:
@@ -25,9 +23,14 @@ def search_elements(array, targets):
 
 
 if __name__ == '__main__':
-    _, massive, _,  targets = read_file(task=4)
-    array = list(map(int, massive.split()))
-    targets = list(map(int, targets.split()))
+    data = read_from_file('../txtf/input.txt')
+
+    n = data[0]
+    array = data[1:n+1]
+    k = data[n+1]
+    targets = data[k:]
     result = search_elements(array, targets)
-    write_output(4, ' '.join(list(map(str, result))))
-    print(f'Память: {psutil.Process().memory_info().rss / 1024 ** 2} Мбайт')
+
+    write_in_file('../txtf/output.txt', result)
+
+    measuring(search_elements, array, targets)
