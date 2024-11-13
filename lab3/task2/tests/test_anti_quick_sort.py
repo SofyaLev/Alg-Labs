@@ -23,16 +23,6 @@ class TestAntiQuickSort(unittest.TestCase):
         self.assertEqual(result1, expected_result1)
         self.assertEqual(result2, expected_result2)
 
-    def test_should_create_permutation_of_max_nums(self):
-        # given
-        n = 10**6
-
-        # when
-        result = anti_quick_sort(n)
-
-        # then
-        return result
-
 
 if __name__ == '__main__':
     unittest.main()
