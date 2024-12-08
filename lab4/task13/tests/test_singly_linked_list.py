@@ -2,7 +2,7 @@ import unittest
 from lab4.task13.src.singly_linked_list import SinglyLinkedList
 
 
-class TestSingleLinkedList(unittest.TestCase):
+class TestSinglyLinkedList(unittest.TestCase):
     def setUp(self):
         self.linked_list = SinglyLinkedList()
 
