@@ -1,7 +1,4 @@
-import sys
 import unittest
-from io import StringIO
-
 from lab4.task13.src.singly_linked_list import SinglyLinkedList
 
 
