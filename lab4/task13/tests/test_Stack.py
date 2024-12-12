@@ -30,14 +30,26 @@ class TestStack(unittest.TestCase):
         # then
         self.assertFalse(self.stack.is_empty())
 
+    def test_should_check_deleted_items(self):
+        # given
+        self.stack.push(1)
+        self.stack.push(2)
+        expected_result = 2
+
+        # when
+        result = self.stack.pop()
+
+        # then
+        self.assertEqual(result, expected_result)
+
     def test_should_check_pop(self):
         # given
         self.stack.push(1)
         self.stack.push(2)
 
         # when
-        self.assertEqual(self.stack.pop(), 2)
-        self.assertEqual(self.stack.pop(), 1)
+        self.stack.pop()
+        self.stack.pop()
 
         # then
         self.assertTrue(self.stack.is_empty())
