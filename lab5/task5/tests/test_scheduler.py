@@ -41,16 +41,6 @@ class TestScheduler(unittest.TestCase):
         # then
         self.assertEqual(result, expected_result)
 
-    def test_should_check_time_data(self):
-        # given
-        expected_time = 6
-
-        # when
-        time = time_data(main)
-
-        # then
-        self.assertTrue(time < expected_time)
-
     def test_should_check_one_task_data(self):
         # given
         n = 2
@@ -63,6 +53,16 @@ class TestScheduler(unittest.TestCase):
         # then
         self.assertEqual(result, expected_result)
 
+    def test_should_check_time_data(self):
+        # given
+        expected_time = 6
+
+        # when
+        time = time_data(main)
+
+        # then
+        self.assertLess(time, expected_time)
+
     def test_should_check_memory_data(self):
         # given
         expected_memory = 512
@@ -71,8 +71,8 @@ class TestScheduler(unittest.TestCase):
         current, peak = memory_data(main)
 
         # then
-        self.assertTrue(current < expected_memory)
-        self.assertTrue(peak < expected_memory)
+        self.assertLess(current, expected_memory)
+        self.assertLess(peak, expected_memory)
 
 
 if __name__ == "__main__":

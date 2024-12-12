@@ -61,7 +61,7 @@ class TestNetworkPackets(unittest.TestCase):
         time = time_data(main)
 
         # then
-        self.assertTrue(time < expected_time)
+        self.assertLess(time, expected_time)
 
     def test_should_check_memory_data(self):
         # given
@@ -71,8 +71,8 @@ class TestNetworkPackets(unittest.TestCase):
         current, peak = memory_data(main)
 
         # then
-        self.assertTrue(current < expected_memory)
-        self.assertTrue(peak < expected_memory)
+        self.assertLess(current, expected_memory)
+        self.assertLess(peak, expected_memory)
 
 
 if __name__ == "__main__":
