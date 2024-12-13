@@ -1,4 +1,4 @@
-from lab3.utils import read_from_file, write_in_file, measuring
+from utils import read, write
 
 
 def quick_sort(A, l, r):
@@ -29,14 +29,13 @@ def sum_of_tenths(A, B):
     return sum_of_tenths
 
 
+def main():
+    write(end='')
+    data = [list(line) for line in read(type_convert=int)]
+    n, m = data[0]
+    A, B = data[1], data[2]
+    write(sum_of_tenths(A, B), to_end=True)
+
+
 if __name__ == '__main__':
-    data = read_from_file('../txtf/input.txt')
-
-    n, m = data[:2]
-    A = data[2:n + 2]
-    B = data[n + 2:]
-    result = sum_of_tenths(A, B)
-
-    write_in_file('../txtf/output.txt', [result])
-
-    measuring(sum_of_tenths, A, B)
+    main()
