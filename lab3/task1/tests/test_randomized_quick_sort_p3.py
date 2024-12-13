@@ -1,7 +1,8 @@
 import unittest
+from utils import memory_data, time_data
+from lab3.task1.src.randomized_quick_sort_p3 import randomized_quick_sort_p3, main
+from utils import generate_random_array
 
-from lab3.task1.src.randomized_quick_sort_p3 import randomized_quick_sort_p3
-from lab3.utils import generate_random_array
 
 class TestRandomizedQuickSortP3(unittest.TestCase):
 
@@ -76,6 +77,27 @@ class TestRandomizedQuickSortP3(unittest.TestCase):
 
         # then
         self.assertEqual(result, expected_result)
+
+    def test_should_check_time_data(self):
+        # given
+        expected_time = 2
+
+        # when
+        time = time_data(main)
+
+        # then
+        self.assertLess(time, expected_time)
+
+    def test_should_check_memory_data(self):
+        # given
+        expected_memory = 256
+
+        # when
+        current, peak = memory_data(main)
+
+        # then
+        self.assertLess(current, expected_memory)
+        self.assertLess(peak, expected_memory)
 
 
 if __name__ == '__main__':

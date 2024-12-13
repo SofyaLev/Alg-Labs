@@ -1,4 +1,4 @@
-from lab3.utils import read_from_file, write_in_file, measuring
+from utils import read, write
 from lab3.task1.src.quick_sort import quick_sort
 
 
@@ -11,11 +11,11 @@ def hirsch_index(citations):
     return 0
 
 
+def main():
+    write(end='')
+    array,  = read(type_convert=int)
+    write(hirsch_index(array), to_end=True)
+
+
 if __name__ == '__main__':
-    data = read_from_file('../txtf/input.txt')
-
-    result = hirsch_index(data)
-
-    write_in_file('../txtf/output.txt', [result])
-
-    measuring(hirsch_index, data)
+    main()

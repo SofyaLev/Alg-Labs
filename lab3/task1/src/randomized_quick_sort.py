@@ -1,5 +1,5 @@
 import random
-from lab3.utils import read_from_file, write_in_file, measuring
+from utils import read, write
 
 
 def partition(A, l, r):
@@ -23,13 +23,11 @@ def randomized_quick_sort(A, l, r):
     return A
 
 
+def main():
+    write(end='')
+    (n,), array = read(type_convert=int)
+    write(*randomized_quick_sort(array, 0, n - 1), to_end=True)
+
+
 if __name__ == '__main__':
-    data = read_from_file('../txtf/input.txt')
-
-    n, array = data[0], data[1:]
-    result = randomized_quick_sort(array, 0, len(array) - 1)
-
-    write_in_file('../txtf/output.txt', result)
-
-    measuring(randomized_quick_sort, array, 0, len(array) - 1)
-
+    main()

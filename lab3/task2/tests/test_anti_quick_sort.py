@@ -1,6 +1,6 @@
 import unittest
-
-from lab3.task2.src.anti_quick_sort import anti_quick_sort
+from utils import memory_data, time_data
+from lab3.task2.src.anti_quick_sort import anti_quick_sort, main
 
 
 class TestAntiQuickSort(unittest.TestCase):
@@ -22,6 +22,27 @@ class TestAntiQuickSort(unittest.TestCase):
         # then
         self.assertEqual(result1, expected_result1)
         self.assertEqual(result2, expected_result2)
+
+    def test_should_check_time_data(self):
+        # given
+        expected_time = 2
+
+        # when
+        time = time_data(main)
+
+        # then
+        self.assertLess(time, expected_time)
+
+    def test_should_check_memory_data(self):
+        # given
+        expected_memory = 256
+
+        # when
+        current, peak = memory_data(main)
+
+        # then
+        self.assertLess(current, expected_memory)
+        self.assertLess(peak, expected_memory)
 
 
 if __name__ == '__main__':

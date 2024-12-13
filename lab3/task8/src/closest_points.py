@@ -1,4 +1,4 @@
-from lab3.utils import read_from_file, write_in_file, measuring
+from utils import read, write
 
 
 def partition(A, l, r):
@@ -29,13 +29,13 @@ def closest_points(array, k):
     return [elem[1] for elem in points[:k]]
 
 
+def main():
+    write(end='')
+    data = [list(line) for line in read(type_convert=int)]
+    n, k = data[0]
+    array = data[1:]
+    write(*closest_points(array, k), to_end=True)
+
+
 if __name__ == '__main__':
-    data = read_from_file('../txtf/input.txt')
-
-    n, k = data[:2]
-    array = [data[i:i + 2] for i in range(2, n * 2 + 1, 2)]
-    result = closest_points(array, k)
-
-    write_in_file('../txtf/output.txt', result)
-
-    measuring(closest_points, array, k)
+    main()

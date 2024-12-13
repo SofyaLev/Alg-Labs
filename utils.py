@@ -4,6 +4,7 @@ import tracemalloc
 import time
 import os
 import subprocess
+import random
 
 
 def get_calling_file_path():
@@ -105,3 +106,8 @@ def run_tasks(working_dir, root_dir):
                 continue
             for line in read(os.path.relpath(output_file, root_dir), type_convert=str):
                 print(*line)
+
+
+def generate_random_array(n, left, right):
+    array = [random.randint(left, right+1) for _ in range(1, n+1)]
+    return array

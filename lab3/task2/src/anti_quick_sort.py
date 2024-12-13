@@ -1,4 +1,4 @@
-from lab3.utils import read_from_file, write_in_file, measuring
+from utils import read, write
 
 
 def qsort(a, left, right):
@@ -28,12 +28,12 @@ def anti_quick_sort(n):
     return a
 
 
+def main():
+    write(end='')
+    (n,) = read(type_convert=int)
+    n = n[0]
+    write(*anti_quick_sort(n), to_end=True)
+
+
 if __name__ == '__main__':
-    data = read_from_file('../txtf/input.txt')
-
-    n = data[0]
-    result = anti_quick_sort(n)
-
-    write_in_file('../txtf/output.txt', result)
-
-    measuring(anti_quick_sort, n)
+    main()
