@@ -1,4 +1,4 @@
-from lab2.utils import read_from_file, write_in_file, measuring
+from utils import read, write
 
 
 def binary_search(array, target):
@@ -22,15 +22,13 @@ def search_elements(array, targets):
     return result
 
 
+def main():
+    write(end='')
+    data = [list(line) for line in read(type_convert=int)]
+    array = data[1]
+    targets = data[3]
+    write(*search_elements(array, targets), to_end=True)
+
+
 if __name__ == '__main__':
-    data = read_from_file('../txtf/input.txt')
-
-    n = data[0]
-    array = data[1:n+1]
-    k = data[n+1]
-    targets = data[k:]
-    result = search_elements(array, targets)
-
-    write_in_file('../txtf/output.txt', result)
-
-    measuring(search_elements, array, targets)
+    main()

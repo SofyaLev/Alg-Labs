@@ -1,7 +1,6 @@
 import unittest
-
-from lab2.task2.src.merge_sort_indexes import merge_sort_indexes
-from lab2.utils import generate_random_array
+from utils import memory_data, time_data
+from lab2.task2.src.merge_sort_indexes import merge_sort_indexes, main
 
 
 class TestMergeSortIndexes(unittest.TestCase):
@@ -65,6 +64,27 @@ class TestMergeSortIndexes(unittest.TestCase):
 
         # then
         self.assertEqual(result, expected_result)
+
+    def test_should_check_time_data(self):
+        # given
+        expected_time = 2
+
+        # when
+        time = time_data(main)
+
+        # then
+        self.assertLess(time, expected_time)
+
+    def test_should_check_memory_data(self):
+        # given
+        expected_memory = 256
+
+        # when
+        current, peak = memory_data(main)
+
+        # then
+        self.assertLess(current, expected_memory)
+        self.assertLess(peak, expected_memory)
 
 
 if __name__ == '__main__':

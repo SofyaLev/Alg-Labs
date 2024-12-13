@@ -1,4 +1,4 @@
-from lab2.utils import read_from_file, write_in_file, measuring
+from utils import read, write
 
 
 def find_max_subarray(n, array):
@@ -18,12 +18,11 @@ def find_max_subarray(n, array):
     return [max_sum, [left, right]]
 
 
+def main():
+    write(end='')
+    (n,), array = read(type_convert=int)
+    write(*find_max_subarray(n, array), to_end=True)
+
+
 if __name__ == '__main__':
-    data = read_from_file('../txtf/input.txt')
-
-    n, array = data[0], data[1:]
-    result = find_max_subarray(n, array)
-
-    write_in_file('../txtf/output.txt', result)
-
-    measuring(find_max_subarray, n, array)
+    main()

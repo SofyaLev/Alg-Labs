@@ -1,4 +1,4 @@
-from lab2.utils import read_from_file, write_in_file, measuring
+from utils import read, write
 
 
 def merge_indexes(array, left, middle, right):
@@ -26,12 +26,11 @@ def merge_sort_indexes(array, left, right):
         return array
 
 
+def main():
+    write(end='')
+    (n, ), array = read(type_convert=int)
+    write(*merge_sort_indexes(array, 0, n - 1), to_end=True)
+
+
 if __name__ == '__main__':
-    data = read_from_file('../txtf/input.txt')
-
-    n, array = data[0], data[1:]
-    result = merge_sort_indexes(array, 0, len(array) - 1)
-
-    write_in_file('../txtf/output.txt', result)
-
-    measuring(merge_sort_indexes, array, 0, len(array) - 1)
+    main()

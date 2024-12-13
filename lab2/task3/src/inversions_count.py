@@ -1,18 +1,18 @@
-from lab2.utils import read_from_file, write_in_file, measuring
+from utils import read, write
 
 
 def inversions_merge(array, temp_array, left, middle, right):
     i = left
     j = middle + 1
     k = left
-    inversions_count = 0
+    inversions_counter = 0
     while i <= middle and j <= right:
         if array[i] <= array[j]:
             temp_array[k] = array[i]
             i += 1
         else:
             temp_array[k] = array[j]
-            inversions_count += (middle - i + 1)
+            inversions_counter += (middle - i + 1)
             j += 1
         k += 1
     while i <= middle:
@@ -25,8 +25,7 @@ def inversions_merge(array, temp_array, left, middle, right):
         k += 1
     for i in range(left, right + 1):
         array[i] = temp_array[i]
-
-    return inversions_count
+    return inversions_counter
 
 
 def inversions_count(array, temp_array, left, right):
@@ -39,13 +38,13 @@ def inversions_count(array, temp_array, left, right):
     return counter
 
 
-if __name__ == '__main__':
-    data = read_from_file('../txtf/input.txt')
-
-    n, array = data[0], data[1:]
+def main():
+    write(end='')
+    (n, ), array = read(type_convert=int)
     temp_array = [0] * n
-    result = inversions_count(array, temp_array,  0, len(array) - 1)
+    result = inversions_count(array, temp_array, 0, n - 1)
+    write(result, to_end=True)
 
-    write_in_file('../txtf/output.txt', [result])
 
-    measuring(inversions_count, array, temp_array,  0, len(array) - 1)
+if __name__ == '__main__':
+    main()

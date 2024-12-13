@@ -1,4 +1,4 @@
-from lab2.utils import read_from_file, write_in_file, measuring
+from utils import read, write
 
 
 def majority_element(array):
@@ -28,12 +28,11 @@ def majority_element(array):
         return 0
 
 
+def main():
+    write(end='')
+    (n,), array = read(type_convert=int)
+    write(majority_element(array), to_end=True)
+
+
 if __name__ == '__main__':
-    data = read_from_file('../txtf/input.txt')
-
-    n, array = data[0], data[1:]
-    result = majority_element(array)
-
-    write_in_file('../txtf/output.txt', [result])
-
-    measuring(majority_element, array)
+    main()
